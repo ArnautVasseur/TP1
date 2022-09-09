@@ -4,7 +4,8 @@ const unObjet = {
     nom:"Beverly Hills",
     prix:12000,
     favori:true,
-    nbrSDB:3
+    nbrSDB:3,
+    image:"src/assets/house.jpg"
 };
 
 </script>

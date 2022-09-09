@@ -5,13 +5,15 @@
             nom:"Beverly Hills",
             prix:12000,
             favori:true,
-            nbrSDB:3
+            nbrSDB:3,
+            image:"src/assets/house.jpg"
         },
         {
             nom:"test",
             prix:1,
             favori:false,
-            nbrSDB:4
+            nbrSDB:4,
+            image:"src/assets/house2.jpg"
         }
     ];
     
