@@ -22,12 +22,23 @@
           lien vers
           <code class="font-mono">/src/pages/liste-fetch.vue</code>
         </router-link>
+        <router-link class="text-red-600 underline" to="/654165">
+          lien vers
+          <code class="font-mono">/src/pages/654165.vue</code>
+        </router-link>
       </li>
     </ul>
   </nav>
 
   <!-- Affiche les pages -->
-  <router-view class="m-2 border-2 p-2" />
+  <Suspense>
+        <template #default>
+          <router-view class="m-2 border-2 p-2" />
+        </template>
+        <template #fallback>
+            Chargement...
+        </template>
+    </Suspense>
 </template>
 
 <script setup lang="ts">
