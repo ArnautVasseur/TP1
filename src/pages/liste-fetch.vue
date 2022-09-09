@@ -1,8 +1,7 @@
 <script setup lang="ts">
     import Card from "../components/card.vue"
     import maisons from "../assets/maisons.json"
-    
-    </script>
+</script>
     
 <template>
     <section>
