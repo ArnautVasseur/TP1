@@ -5,7 +5,8 @@ const unObjet = {
     prix:12000,
     favori:true,
     nbrSDB:3,
-    image:"src/assets/house.jpg"
+    image:"src/assets/house.jpg",
+    nbr:2
 };
 
 </script>

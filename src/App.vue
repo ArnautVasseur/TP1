@@ -22,9 +22,13 @@
           lien vers
           <code class="font-mono">/src/pages/liste-fetch.vue</code>
         </router-link>
-        <router-link class="text-red-600 underline" to="/654165">
+        <router-link class="text-red-600 underline" to="/0">
           lien vers
-          <code class="font-mono">/src/pages/654165.vue</code>
+          <code class="font-mono">/src/pages/0.vue</code>
+        </router-link>
+        <router-link class="text-red-600 underline" to="/1">
+          lien vers
+          <code class="font-mono">/src/pages/1.vue</code>
         </router-link>
       </li>
     </ul>
