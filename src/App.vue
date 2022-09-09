@@ -5,10 +5,14 @@
       menu (dans <code class="font-mono">/src/App.vue</code>)
     </h4>
     <ul>
-      <li>
+      <li class="flex flex-col">
         <router-link class="text-red-600 underline" to="/">
           lien vers
           <code class="font-mono">/src/pages/index.vue</code>
+        </router-link>
+        <router-link class="text-red-600 underline" to="/simple">
+          lien vers
+          <code class="font-mono">/src/pages/simple.vue</code>
         </router-link>
       </li>
     </ul>
