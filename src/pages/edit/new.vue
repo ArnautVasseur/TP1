@@ -4,5 +4,4 @@ import FicheOffreMaison from "@/components/FormulaireOffreMaison.vue"
 
 <template>
     <FicheOffreMaison/>
-    
 </template>

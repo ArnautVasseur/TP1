@@ -1,7 +1,11 @@
 <script setup>
+import { createClient } from '@supabase/supabase-js'
 import { ref } from "@vue/reactivity"
 import Card from "@/components/card.vue"
-
+async function upsertMaison(dataForm, node) {
+ const { data, error } = await supabase.from("Maison").upsert(dataForm);
+ if (error) node.setErrors([error.message])
+}
 const maison = ref({})
 </script>
 <template>
@@ -11,7 +15,8 @@ const maison = ref({})
             <Card v-bind="maison"/>
         </div>
         <div class="p-2">
-            <FormKit type="form" v-model="maison"
+            <FormKit type="form" @submit="upsertMaison" 
+                v-model="maison"
                 submit-label="Submit"
                 :submit-attrs="{ classes: { input: 'bg-blue-300 p-1 rounded mt-5 flex justify-center w-20' } }">
                 <div class="flex justify-around">
