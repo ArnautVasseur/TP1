@@ -1,7 +1,7 @@
-<script setup>
-import { createClient } from '@supabase/supabase-js'
+<script setup lang="ts">
 import { ref } from "@vue/reactivity"
 import Card from "@/components/card.vue"
+import { supabase } from "@/supabase";
 async function upsertMaison(dataForm, node) {
  const { data, error } = await supabase.from("Maison").upsert(dataForm);
  if (error) node.setErrors([error.message])
