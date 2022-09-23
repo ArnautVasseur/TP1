@@ -20,6 +20,13 @@ const maison = ref({})
                 submit-label="Submit"
                 :submit-attrs="{ classes: { input: 'bg-blue-300 p-1 rounded mt-5 flex justify-center w-20' } }">
                 <div class="flex justify-around">
+                    <FormKit name="code_Maison" label="code_Maison"
+                    :config="{
+                        classes: {
+                            input: 'p-1 rounded border-gray-300 shadow-sm border-2',
+                            label: 'text-gray-600',
+                        },
+                    }"/>
                     <FormKit name="nom" label="Nom"
                     :config="{
                         classes: {
