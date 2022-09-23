@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Card from "../components/card.vue"
-import maisons from "../assets/maisons.json"
+import Maison from "../assets/Maison.json"
 
     defineProps({
         nbr: String,
@@ -9,7 +9,7 @@ import maisons from "../assets/maisons.json"
 </script>
     
 <template>
-  <Card v-bind="maisons[nbr]"></Card>
+  <Card v-bind="Maison[nbr]"></Card>
 </template>
 
 <route>

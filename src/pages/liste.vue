@@ -21,6 +21,6 @@
     
 <template>
     <section>
-        <Card v-for="maison in maisons" :key="maison.nom" v-bind="maison"></Card>
+        <Card v-for="Maison in Maison" :key="Maison.nom" v-bind="Maison"></Card>
     </section>
 </template>

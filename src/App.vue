@@ -34,6 +34,10 @@
           lien vers
           <code class="font-mono">/src/pages/edit/new.vue</code>
         </router-link>
+        <router-link class="text-red-600 underline" to="/list-supabase">
+          lien vers
+          <code class="font-mono">/src/pasges/list-supabase.vue</code>
+        </router-link>
       </li>
     </ul>
   </nav>

@@ -1,9 +1,9 @@
-<script setup>
-const res = await fetch("src/assets/maisons.json")
-const maisons = await res.json()
+<script setup lang="ts">
 import Card from "../components/card.vue"
+const res = await fetch("src/assets/Maison.json")
+const Maison = await res.json()
 </script>
     
 <template>
-    <Card v-for="maison in maisons" :key="maison.nom" v-bind="maison"></Card>
+    <Card v-for="Maison in Maison" :key="Maison.nom" v-bind="Maison"></Card>
 </template>
