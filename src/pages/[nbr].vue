@@ -8,12 +8,12 @@ import maisons from "../assets/maisons.json"
 
 </script>
     
-    <template>
-      <Card v-bind="maisons[nbr]"></Card>
-    </template>
-    
-    <route>
-    {
-      name: 'offre-nbr'
-    }
-    </route>
+<template>
+  <Card v-bind="maisons[nbr]"></Card>
+</template>
+
+<route>
+{
+  name: 'offre-nbr'
+}
+</route>

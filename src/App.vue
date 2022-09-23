@@ -30,19 +30,23 @@
           lien vers
           <code class="font-mono">/src/pages/1.vue</code>
         </router-link>
+        <router-link class="text-red-600 underline" to="/edit/new">
+          lien vers
+          <code class="font-mono">/src/pages/edit/new.vue</code>
+        </router-link>
       </li>
     </ul>
   </nav>
 
   <!-- Affiche les pages -->
   <Suspense>
-        <template #default>
-          <router-view class="m-2 border-2 p-2" />
-        </template>
-        <template #fallback>
-            Chargement...
-        </template>
-    </Suspense>
+      <template #default>
+        <router-view class="m-2 border-2 p-2" />
+      </template>
+      <template #fallback>
+          Chargement...
+      </template>
+  </Suspense>
 </template>
 
 <script setup lang="ts">
