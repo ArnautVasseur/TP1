@@ -1,4 +1,3 @@
-const formKitTailwind = require('@formkit/themes/tailwindcss');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 content: [
@@ -8,7 +7,5 @@ content: [
   theme: {
     extend: {},
   },
-  plugins: [
-    formKitTailwind,
-  ],
+  plugins: [],
 }

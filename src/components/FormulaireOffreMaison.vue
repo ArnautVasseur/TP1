@@ -1,55 +1,68 @@
 <script setup lang="ts">
-import { ref } from "@vue/reactivity"
-import Card from "@/components/card.vue"
-import { supabase } from "@/supabase";
-async function upsertMaison(dataForm, node) {
- const { data, error } = await supabase.from("Maison").upsert(dataForm);
- if (error) node.setErrors([error.message])
+import { supabase } from '@/supabase'
+import { ref } from "@vue/reactivity";
+import card from "@/components/card.vue";
+import { label } from "@formkit/inputs";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const maison = ref({});
+
+const props = defineProps(["id"]);
+if (props.id) {
+    // On charge les données de la maison
+    let { data, error } = await supabase
+        .from("Maison")
+        .select("*")
+        .eq("id", props.id);
+    if (error) console.log("n'a pas pu charger le table Maison :", error);
+    else maison.value = (data as any[])[0];
 }
-const maison = ref({})
+
+
+async function upsertMaison(dataForm, node) {
+    const { data, error } = await supabase.from("Maison").upsert(dataForm);
+    if (error || !data) node.setErrors([error?.message])
+    else {
+        node.setErrors([]);
+        router.push({ name: "edit-id", params: { id: data[0].id } });
+    }
+}
+
+
+
+
 </script>
+
+
 <template>
-    <div>
+
+    <div class="flex flex-row-reverse justify-center">
         <div class="p-2">
-            <h2 class="text-2xl">Résultat ( Prévisualisation )</h2>
-            <Card v-bind="maison"/>
+            <h2 class="text-2xl">Résultat (Prévisualisation)</h2>
+            <card v-bind="maison" />
         </div>
-        <div class="p-2">
-            <FormKit type="form" @submit="upsertMaison" 
-                v-model="maison"
-                submit-label="Submit"
-                :submit-attrs="{ classes: { input: 'bg-blue-300 p-1 rounded mt-5 flex justify-center w-20' } }">
-                <div class="flex justify-around">
-                    <FormKit name="code_Maison" label="code_Maison"
-                    :config="{
-                        classes: {
-                            input: 'p-1 rounded border-gray-300 shadow-sm border-2',
-                            label: 'text-gray-600',
-                        },
-                    }"/>
-                    <FormKit name="nom" label="Nom"
-                    :config="{
-                        classes: {
-                            input: 'p-1 rounded border-gray-300 shadow-sm border-2',
-                            label: 'text-gray-600',
-                        },
-                    }"/>
-                    <FormKit name="prix" label="Prix" type="number"
-                    :config="{
-                        classes: {
-                            input: 'p-1 rounded border-b-blue-500 shadow-sm border-2',
-                            label: 'text-gray-600',
-                        },
-                    }"/>
-                </div>
-                <FormKit name="favori" label="Favori" type="checkbox" wrapper-class="flex"
-                :config="{
-                        classes: {
-                            label: 'ml-5 mt-10',
-                            input:'content-center w-12 mt-12'
-                        },
-                    }"/>
-            </FormKit>
+
+        <div class="p-2 border-2 mt-20 bg-indigo-50 rounded-2xl">
+            <div class="p-4 ">
+                <FormKit @submit="upsertMaison" type="form" v-model="maison" :config="{
+                classes: {
+                input: 'p-1 rounded border-gray-300 mb-3 shadow-sm border',
+                label: 'text-gray-600 font-medium',
+                },
+                }" :submit-attrs="{ classes: 
+                       { input: 'border-2 bg-indigo-200 border-indigo-200 p-1 rounded ',
+                         label:''
+                    } }">
+                    <FormKit name="nom" label="Nom" />
+                    <FormKit name="adresse" label="Adresse" />
+                    <FormKit name="nbrChambre" label="Nombre de lits" type="number" />
+                    <FormKit name="nbrSDB" label="Nombre de salle de bain" type="number" />
+                    <FormKit name="surface" label="Superficie en m²" type="number" />
+                    <FormKit name="prix" label="Prix" type="number" />
+                    <FormKit name="fav" label="Ajouter l'offre aux favoris" type="checkbox" wrapper-class="flex" />
+                </FormKit>
+            </div>
         </div>
     </div>
 </template>

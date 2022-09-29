@@ -1,37 +1,85 @@
 <script setup lang="ts">
-import bath from "./icones/bath.vue";
-import heart from "./icones/heart.vue";
+    import Bed from "../components/icons/bed.vue";
+    import Bath from "../components/icons/bath.vue";
+    import Surface from "./icons/surface.vue";
+    import HeartIcon from "../components/icons/heart.vue";
+   
+    defineProps({
+      nom : {type: String, default:'Default'},
+      prix: {type:Number, default:2800 },
+      adresse: {type: String, default: ''},
+      nbrChambre: {type:Number , default: 3 },
+      nbrSDB: {type:Number , default: 2 },
+      surface: {type:Number, default: 80},
+      fav:{ type:Boolean, default: false},
+      image:{type:String, default:'src/assets/house1.jpg'}
+      });
 
-defineProps( {
-    nom: String,
-    prix: Number,
-    favori: Boolean,
-    image: String, // les images sont simplement l'URL absolue (depuis la racine, débute par '/' )
-    nbrSDB: Number,
-  });
 </script>
 
 <template>
-  <figure>
-    <!-- Pour changer la valeur d'un attribut on utilise un "binding" :
-    https://vuejs.org/guide/essentials/template-syntax.html#attribute-bindings 
-    Ici on affecte à l'attribut 'src' la 'props' "image" -->
-    <img class="w-full h-48 object-cover" :src="image" alt="" />
+  <div>
+     <figure class="flex flex-col mt-12 mx-8 w-96">
+    <img
+      :src=image
+      alt="house"
+      class="rounded-t-lg w-full h-48 object-cover"
+    />
     <figcaption
-      class="relative flex flex-col border-2 border-t-0 border-indigo-100"
+      class="
+        flex
+        w-full
+        flex-col
+        gap-4
+        rounded-b
+        border border-indigo-50
+        py-7
+        px-5
+      "
     >
-      <!-- Pour changer une classe CSS en fonction d'un booléen : 
-      https://vuejs.org/guide/essentials/class-and-style.html#binding-html-classes -->
-      <heart :class="{ 'fill-red-300': favori }" />
-
-      <!-- Pour afficher du contenu textuel, simplement utiliser l'interpolation par double accolades (qui contiendront le JS dont l'interpretation donne le résultat affiché). -->
-      <div class="text-2xl font-bold text-indigo-500 pr-1">${{ prix }}</div>
-
-      <h3 class="text-2xl text-gray-900">{{ nom }}</h3>
-
-      <hr class="border-indigo-100 border-t-2 my-4" />
-
-      <div><bath class="inline-block pr-1" />{{ nbrSDB }} Bathrooms</div>
+      <div class="flex justify-between">
+        <div class="w-2/5">
+          <div class="flex items-center">
+            <p class="text-2xl font-bold text-indigo-500"></p>
+            <span class="text-xs font-normal text-gray-900">{{prix}} /month</span>
+          </div>
+          <p class="text-2xl font-bold">{{nom}}</p>
+        </div>
+        <div
+          class="
+            flex
+            h-12
+            w-12
+            items-center
+            justify-center
+            rounded-full
+            border-2 border-indigo-100
+          "
+        >
+          <HeartIcon class="h-6 stroke-indigo-500 text-transparent" :class="{'fill-indigo-500' :fav}"></HeartIcon>
+        </div>
+      </div>
+      <p class="text-base font-normal text-gray-900">
+        {{adresse}}
+      </p>
+      <div class="w-full border border-indigo-50"></div>
+      <div class="flex justify-between">
+        <div class="flex items-center gap-2">
+          <bed class="h-5 stroke-indigo-500"></bed>
+          <span class="text-xs text-gray-500">{{nbrChambre}} Beds</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <bath class="h-5 stroke-indigo-500"></bath>
+          <span class="text-xs text-gray-500">{{nbrSDB}} Bathrooms</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <Surface class="h-5 stroke-indigo-500"></Surface>
+          <span class="text-xs text-gray-500">{{surface}} m²</span>
+        </div>
+      </div>
     </figcaption>
   </figure>
+</div>
+  
 </template>
+

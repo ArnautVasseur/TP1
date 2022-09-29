@@ -1,26 +1,18 @@
 <script setup lang="ts">
-    import Card from "../components/card.vue"
-    const maisons = [
-        {
-            nom:"Beverly Hills",
-            prix:12000,
-            favori:true,
-            nbrSDB:3,
-            image:"src/assets/house.jpg"
-        },
-        {
-            nom:"test",
-            prix:1,
-            favori:false,
-            nbrSDB:4,
-            image:"src/assets/house2.jpg"
-        }
-    ];
+    import Card from "../components/card.vue";
+    import Maisons from "@/assets/Maisons.json";
+   
+</script>
     
-    </script>
     
 <template>
-    <section>
-        <Card v-for="maison in maisons" :key="maison.nom" v-bind="maison"></Card>
-    </section>
+<<<<<<< HEAD
+    <div>
+       <Card v-for="maison in Maisons" :key="maison" v-bind="maison"></Card>
+=======
+    <div class="flex items-center flex-col">
+        <p>Liste</p>
+       <Card v-for="m in Maisons" :key="m" v-bind="m"></Card>
+>>>>>>> 50f55225777ecc9888d9a852eacf00bd1f7d5b4a
+    </div>
 </template>
